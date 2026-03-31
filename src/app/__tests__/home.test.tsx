@@ -4,6 +4,6 @@ import Home from '../page'
 describe('Home', () => {
     it('renders correctly', () => {
         render(<Home />)
-        expect(screen.getByText(/hello/i)).toBeInTheDocument()
+        expect(screen.getByText(/Documentation/i)).toBeInTheDocument()
     })
 })

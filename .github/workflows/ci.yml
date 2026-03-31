@@ -16,22 +16,8 @@ jobs:
       - name: checkout-code
         uses: actions/checkout@v4
 
-      - name: install node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 24
+      - name: build docker image
+        run: docker compose build --pull next-app
 
-      - name: npm install
-        run: npm install
-
-      - name: build app
-        run: npm run build
-
-      - name: start server
-        run: npm start &
-
-      - name: wait for app
-        run: npx wait-on http://localhost:3000
-
-      - name: test
-        run: npx tsx src/app/__tests__/home.test.tsx
+      - name: test in docker
+        run: docker compose run --rm next-app npm test -- --ci --runInBand
