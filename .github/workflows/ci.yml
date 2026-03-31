@@ -20,4 +20,4 @@ jobs:
         run: docker compose build --pull next-app
 
       - name: test in docker
-        run: docker compose run --rm next-app npm test -- --ci --runInBand
+        run: docker compose run --rm -e NODE_ENV=test next-app npm test -- --ci --runInBand

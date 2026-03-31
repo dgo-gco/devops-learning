@@ -6,7 +6,7 @@ services:
     container_name: next-app
     restart: unless-stopped
     environment:
-      NODE_ENV: production
+      NODE_ENV: ${NODE_ENV:-production}
     ports:
       - "3000:3000"
     healthcheck:
